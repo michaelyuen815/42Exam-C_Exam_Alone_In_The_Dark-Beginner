@@ -3,60 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chyuen <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/04 19:08:41 by chyuen            #+#    #+#             */
-/*   Updated: 2019/05/04 20:02:28 by chyuen           ###   ########.fr       */
+/*   Created: 2019/05/14 10:47:14 by exam              #+#    #+#             */
+/*   Updated: 2019/05/14 11:13:30 by exam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-  typedef struct  s_point
-  {
-    int           x;
-    int           y;
-  }               t_point;
+#include "flood_fill.h"
 
-void	flood_fill(char **tab, t_point size, t_point begin)
+void  flood_fill(char **tab, t_point size, t_point begin)
 {
-	int i;
-	int j;
-
-	begin.y--;
-	begin.x--;
-
-	if (tab[begin.y][begin.x] == '1')
+	if (begin.y > size.y || begin.x > size.x || begin.x < 1 || begin.y < 1)
 		return ;
-	if (begin.y < 0 || begin.y >= size.y)
+	if (tab[begin.x][begin.y] == '1')
 		return ;
-	if (begin.x < 0 || begin.x >= size.x)
+	if (tab[begin.x][begin.y] == 'F')
 		return ;
-	tab[begin.y][begin.x] = 'F';
-	j = begin.x + 1;
-	while (--j >= 0)
-	{
-		i = begin.y + 1;
-		while (--i >= 0)
-		{
-			if (i != size.y - 1)
-				if (tab[i + 1][j] == 'F' && tab[i][j] == '0')
-					tab[i][j] = 'F';
-			if (j != size.x - 1)
-				if (tab[i][j + 1] == 'F' && tab[i][j] == '0')
-					tab[i][j] = 'F';
-		}
-	}
-	j = -1;
-	while (++j < size.x)
-	{
-		i = -1;
-		while (++i < size.y)
-		{
-			if (i)
-				if (tab[i - 1][j] == 'F' && tab[i][j] == '0')
-					tab[i][j] = 'F';
-			if (j)
-				if (tab[i][j - 1] == 'F' && tab[i][j] == '0')
-					tab[i][j] = 'F';
-		}
-	}
+	tab[begin.x][begin.y] = 'F';
+	if (begin.x != 1)
+		flood_fill(tab, size, (t_point){begin.x - 1, begin.y});
+	if (begin.x != size.x)
+		flood_fill(tab, size, (t_point){begin.x + 1, begin.y});
+	if (begin.y != 1)
+		flood_fill(tab, size, (t_point){begin.x, begin.y - 1});
+	if (begin.y != size.y)
+		flood_fill(tab, size, (t_point){begin.x, begin.y + 1});
 }
