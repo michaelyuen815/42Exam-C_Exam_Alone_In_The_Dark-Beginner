@@ -1,0 +1,149 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e1z2r7p22.42.us.org
+Darwin 17.4.0 x86_64
+$> date
+Mon May 20 19:56:06 PDT 2019
+$> gcc --version
+Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 9.0.0 (clang-900.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+$> clang --version
+Apple LLVM version 9.0.0 (clang-900.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2019/c-exam-alone-in-the-dark-beginner/practice-exam_20190521/chyuen
+
+= Git history ==================================================================
+$> git -C /var/folders/n_/5lpv9cns1rs4hfvfs8ytsg0r0000gp/T/tmphX7XGG/user log --pretty='%H - %an, %ad : %s'
+17b2025005b16d45e23684fce26d6904c8ec3d31 - Chun chung michael Yuen, Mon May 20 19:55:53 2019 -0700 : rpn
+7f1d19a44cf85ee90c1599715f523f3a9756de15 - Chun chung michael Yuen, Mon May 20 19:15:39 2019 -0700 : mate
+946741f04197b4fefd40226ab3f1af199c351c9e - Chun chung michael Yuen, Mon May 20 18:02:36 2019 -0700 : range
+541149c992c2804809146775a1cbdae8366a4344 - Chun chung michael Yuen, Mon May 20 17:53:57 2019 -0700 : swbits
+a669823dcd8f15c37c1f95117a7f38fbee55cc6e - Chun chung michael Yuen, Mon May 20 17:50:13 2019 -0700 : swap
+b871b9b0afb0395c88deec812926303a8597ccb6 - Chun chung michael Yuen, Mon May 20 17:50:01 2019 -0700 : swap
+5b497b2b994358943b9b57ecae370b31bc81023e - Chun chung michael Yuen, Mon May 20 17:45:55 2019 -0700 : count
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/n_/5lpv9cns1rs4hfvfs8ytsg0r0000gp/T/tmphX7XGG/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  1932 May 20 19:56 __GIT_HISTORY
+drwxr-xr-x  4 deepthought  deepthought   136 May 20 19:56 check_mate
+drwxr-xr-x  3 deepthought  deepthought   102 May 20 19:56 ft_countdown
+drwxr-xr-x  3 deepthought  deepthought   102 May 20 19:56 ft_range
+drwxr-xr-x  3 deepthought  deepthought   102 May 20 19:56 ft_swap
+drwxr-xr-x  3 deepthought  deepthought   102 May 20 19:56 rpn_calc
+drwxr-xr-x  3 deepthought  deepthought   102 May 20 19:56 swap_bits
+
+/var/folders/n_/5lpv9cns1rs4hfvfs8ytsg0r0000gp/T/tmphX7XGG/user/check_mate:
+total 16
+-rw-r--r--  1 deepthought  deepthought  2881 May 20 19:56 check_mate.c
+-rw-r--r--  1 deepthought  deepthought  1633 May 20 19:56 main.c
+
+/var/folders/n_/5lpv9cns1rs4hfvfs8ytsg0r0000gp/T/tmphX7XGG/user/ft_countdown:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1027 May 20 19:56 ft_countdown.c
+
+/var/folders/n_/5lpv9cns1rs4hfvfs8ytsg0r0000gp/T/tmphX7XGG/user/ft_range:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1195 May 20 19:56 ft_range.c
+
+/var/folders/n_/5lpv9cns1rs4hfvfs8ytsg0r0000gp/T/tmphX7XGG/user/ft_swap:
+total 8
+-rw-r--r--  1 deepthought  deepthought  968 May 20 19:56 ft_swap.c
+
+/var/folders/n_/5lpv9cns1rs4hfvfs8ytsg0r0000gp/T/tmphX7XGG/user/rpn_calc:
+total 8
+-rw-r--r--  1 deepthought  deepthought  2438 May 20 19:56 main.c
+
+/var/folders/n_/5lpv9cns1rs4hfvfs8ytsg0r0000gp/T/tmphX7XGG/user/swap_bits:
+total 8
+-rw-r--r--  1 deepthought  deepthought  978 May 20 19:56 swap_bits.c
+ 
+= rpn_calc =====================================================================
+$> gcc -Wextra -Wall -Werror main.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./g8bbccjlikzcjkrsg7gbwh7d 
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./vnr6egohn25biya3i2qbv903 "2 3 -" "5 6 +"
+$> diff -U 3 user_output_test2 test2.output | cat -e
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./6r62xripuo2hown4a8kng5pu "2 -"
+$> diff -U 3 user_output_test3 test3.output | cat -e
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./2d9h39uqb8wtripm6km9zdy9 "-"
+$> diff -U 3 user_output_test4 test4.output | cat -e
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./u7r2xrd3go23mmvo392sok16 "2 5 6 -"
+$> diff -U 3 user_output_test5 test5.output | cat -e
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./nq4jvt4nmw9crnfjbxxjfei6 "3 4 +"
+$> diff -U 3 user_output_test6 test6.output | cat -e
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./h4ii913rjovpdq01hrxodmg0 "2 4 + 8 *"
+$> diff -U 3 user_output_test7 test7.output | cat -e
+
+Diff OK :D
+= Test 8 ===================================================
+$> ./pzv1rcxdy4ni0i379ian1l85 "50 10 25 + -"
+$> diff -U 3 user_output_test8 test8.output | cat -e
+
+Diff OK :D
+= Test 9 ===================================================
+$> ./tmpfv50avm5b7ou4ix9qy1i2 "1000 5 2 * /"
+$> diff -U 3 user_output_test9 test9.output | cat -e
+
+Diff OK :D
+= Test 10 ==================================================
+$> ./vv4jc7zunnptbaw3qd6e6xqp "1000 3 %"
+$> diff -U 3 user_output_test10 test10.output | cat -e
+
+Diff OK :D
+= Test 11 ==================================================
+$> ./x5wi5z2uxl1nz3jycy5jfrw8 "1000 0 /"
+$> diff -U 3 user_output_test11 test11.output | cat -e
+
+Diff OK :D
+= Test 12 ==================================================
+$> ./a7xv64supa6xak6aampszrmp "1000 0 %"
+$> diff -U 3 user_output_test12 test12.output | cat -e
+
+Diff OK :D
+= Test 13 ==================================================
+$> ./751o7zb7gbfbbmf90zx9ab6q "-1000 -1 *"
+$> diff -U 3 user_output_test13 test13.output | cat -e
+
+Diff OK :D
+= Test 14 ==================================================
+$> ./u4fb3i1yj6qqivi5iou5hsn5 "-111 45 123 * 26 73 + + - 78 * -85 / 123 -"
+$> diff -U 3 user_output_test14 test14.output | cat -e
+
+Diff OK :D
+= Test 15 ==================================================
+$> ./cbj6zy1ddo142hr64fbd4mbz "78 326 542 96 1452 36 965 % - * / - +"
+$> diff -U 3 user_output_test15 test15.output | cat -e
+
+Diff OK :D
+Grade: 1
+
+= Final grade: 1 ===============================================================

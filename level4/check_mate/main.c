@@ -3,63 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: chyuen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/14 11:18:10 by exam              #+#    #+#             */
-/*   Updated: 2019/05/14 12:44:43 by exam             ###   ########.fr       */
+/*   Created: 2019/05/20 18:12:37 by chyuen            #+#    #+#             */
+/*   Updated: 2019/05/20 19:04:53 by chyuen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "check_mate.h"
-#include <stdio.h>
 
-char **ft_board(int ac, char **av)
+char **ft_board(int argc, char **argv)
 {
-	char **board;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	**board;
 
-	if (!(board = (char**)malloc(sizeof(char*) * ac)))
+	if (argc < 2 || argc > 9)
 		return (NULL);
-	board[ac - 1] = NULL;
+	if (!(board = (char**)malloc(sizeof(char*) * argc)))
+		return (NULL);
 	i = -1;
-	while (++i < ac - 1)
+	board[argc - 1] = 0;
+	while (++i < argc - 1)
 	{
 		j = -1;
-		if (!(board[i] = (char*)malloc(sizeof(char) * ac)))
-		{
-			free(board);
-			return (NULL);
-		}
-		board[i][ac - 1] = 0;
-		while (++j < ac - 1 && *av[i + 1])
-			board[i][j] = *av[i + 1]++;
-		if (!(ac - 1 == j && !*av[i + 1]))
-		{
-			free(board);
-			return (NULL);
-		}
+		board[i] = (char*)malloc(sizeof(char) * argc);
+		board[argc - 1] = 0;
+		while (++j < argc - 1)
+			board[i][j] = *argv[i + 1]++;
 	}
 	return (board);
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	char **board;
 
 	if (argc > 1)
 	{
 		board = ft_board(argc, argv);
-		if (board)
-		{
-			if (ft_check_mate(board, argc - 1))
-				write(1, "Success", 7);
-			else
-				write(1, "Fail", 4);
-			free(board);
-		}
+		if (ft_check_main(argc, board))
+			write(1, "Success", 7);
 		else
 			write(1, "Fail", 4);
+		free(board);
 	}
 	write(1, "\n", 1);
 	return (0);
