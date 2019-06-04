@@ -12,13 +12,15 @@
 
 unsigned int lcm(unsigned int a, unsigned int b)
 {
+	int base;
 	int ret;
 
 	if (a < 1 || b < 1)
 		return (0);
-	ret = (a > b ? a : b);
+	base = (a > b ? a : b);
+	ret = base;
 
 	while (ret % b || ret % a)
-	   ret++;
+	   ret += base;
 	return (ret);	
 }

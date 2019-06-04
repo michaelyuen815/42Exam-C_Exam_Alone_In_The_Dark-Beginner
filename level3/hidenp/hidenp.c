@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 	
 	if (argc == 3)
 	{
-		while (*argv[2])
+		while (*argv[2] && *argv[1])
 		{
 			if (*argv[1] == *argv[2])
 				argv[1]++;

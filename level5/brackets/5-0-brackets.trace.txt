@@ -1,0 +1,113 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e1z2r8p14.42.us.org
+Darwin 17.5.0 x86_64
+$> date
+Tue May 28 11:23:26 PDT 2019
+$> gcc --version
+Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 9.1.0 (clang-902.0.39.1)
+Target: x86_64-apple-darwin17.5.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+$> clang --version
+Apple LLVM version 9.1.0 (clang-902.0.39.1)
+Target: x86_64-apple-darwin17.5.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2019/c-exam-alone-in-the-dark-beginner/exam_20190528/chyuen
+
+= Git history ==================================================================
+$> git -C /var/folders/z5/whr256yx5177gzngkt_dzszh0000gp/T/tmpqdr8Gu/user log --pretty='%H - %an, %ad : %s'
+6c81d2fb7b5f41970f23e71ea509de08ae59d83b - Exam 42, Tue May 28 11:20:57 2019 -0700 : ()
+e0d32fedbdc17803c5b809fb0f072854989d1934 - Exam 42, Tue May 28 11:03:40 2019 -0700 : checkmate
+0169cb03be6a850d8b10ca930778183a7bfec275 - Exam 42, Tue May 28 09:47:20 2019 -0700 : hex
+7ee9ed3a1bfb4df711981cbe1f7cf29c8e74929f - Exam 42, Tue May 28 09:28:36 2019 -0700 : last
+57671d1e16c8a986c793c4e92951020ea91173ad - Exam 42, Tue May 28 09:09:57 2019 -0700 : swap
+f23052dfa8e24716b4484e70614083db5b140ac7 - Exam 42, Tue May 28 09:05:03 2019 -0700 : count
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/z5/whr256yx5177gzngkt_dzszh0000gp/T/tmpqdr8Gu/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  1500 May 28 11:23 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought   102 May 28 11:23 brackets
+drwxr-xr-x  4 deepthought  deepthought   136 May 28 11:23 check_mate
+drwxr-xr-x  3 deepthought  deepthought   102 May 28 11:23 ft_countdown
+drwxr-xr-x  3 deepthought  deepthought   102 May 28 11:23 ft_swap
+drwxr-xr-x  3 deepthought  deepthought   102 May 28 11:23 last_word
+drwxr-xr-x  3 deepthought  deepthought   102 May 28 11:23 print_hex
+
+/var/folders/z5/whr256yx5177gzngkt_dzszh0000gp/T/tmpqdr8Gu/user/brackets:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1598 May 28 11:23 main.c
+
+/var/folders/z5/whr256yx5177gzngkt_dzszh0000gp/T/tmpqdr8Gu/user/check_mate:
+total 16
+-rw-r--r--  1 deepthought  deepthought  2916 May 28 11:23 check_mate.c
+-rw-r--r--  1 deepthought  deepthought  1645 May 28 11:23 main.c
+
+/var/folders/z5/whr256yx5177gzngkt_dzszh0000gp/T/tmpqdr8Gu/user/ft_countdown:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1026 May 28 11:23 ft_countdown.c
+
+/var/folders/z5/whr256yx5177gzngkt_dzszh0000gp/T/tmpqdr8Gu/user/ft_swap:
+total 8
+-rw-r--r--  1 deepthought  deepthought  968 May 28 11:23 ft_swap.c
+
+/var/folders/z5/whr256yx5177gzngkt_dzszh0000gp/T/tmpqdr8Gu/user/last_word:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1314 May 28 11:23 last_word.c
+
+/var/folders/z5/whr256yx5177gzngkt_dzszh0000gp/T/tmpqdr8Gu/user/print_hex:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1489 May 28 11:23 print_hex.c
+ 
+= brackets =====================================================================
+$> gcc -Wextra -Wall -Werror main.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./y81az93bq1sf03u7r3hlf501 '(toto)'
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./jegakm34t29xxitreq1iq89w '([)]'
+$> diff -U 3 user_output_test2 test2.output | cat -e
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./lucee3jd4rsf5aprfsfzfre0 '' '{[(0 + 0)(1 + 1)](3*(-1)){()}}'
+$> diff -U 3 user_output_test3 test3.output | cat -e
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./j5g2huopc59fn8i5q5hxyqq9 
+$> diff -U 3 user_output_test4 test4.output | cat -e
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./7fx7wfjgju2mnsnhzww47jzl '()' '[]' '{}' '' 'toto' '([{}[{(()[])}()]]())(((([])))())'
+$> diff -U 3 user_output_test5 test5.output | cat -e
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./rms9nwx2lzbejproifc8vr1z '()[]{}' '([{}])[({})]{([])}'
+$> diff -U 3 user_output_test6 test6.output | cat -e
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./jt46o1a7fy59e8mofbljxbey '(]' '{)' '[}' ')' '}' ')' '(' '{' '['
+$> diff -U 3 user_output_test7 test7.output | cat -e
+
+Diff OK :D
+= Test 8 ===================================================
+$> ./3sptmqz47uklluguf9rdqj14 '({)}' '[()]{}]' '])}' '([{' "(cette (trace n'a pas [de but precis]) {a part embeter (tout le monde)})"
+$> diff -U 3 user_output_test8 test8.output | cat -e
+
+Diff OK :D
+Grade: 1
+
+= Final grade: 1 ===============================================================

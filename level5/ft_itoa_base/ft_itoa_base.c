@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#define OCT "0123456789ABCDEF"
+#define HEX "0123456789ABCDEF"
 
 char	*ft_itoa_base(int value, int base)
 {
@@ -27,7 +27,7 @@ char	*ft_itoa_base(int value, int base)
 		tmp[len++] = '0';
 	while (value)
 	{
-		tmp[len++] = OCT[value % base * sign];
+		tmp[len++] = HEX[value % base * sign];
 		value /= base;
 	}
 	if (sign == -1 && base == 10)
