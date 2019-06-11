@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: chyuen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/14 10:47:14 by exam              #+#    #+#             */
-/*   Updated: 2019/05/14 11:13:30 by exam             ###   ########.fr       */
+/*   Created: 2019/06/10 20:31:24 by chyuen            #+#    #+#             */
+/*   Updated: 2019/06/10 21:03:46 by chyuen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,19 @@ void  flood_fill(char **tab, t_point size, t_point begin)
 {
 	char ch;
 
-	ch = tab[begin.x][begin.y];
-	if (begin.y > size.y || begin.x > size.x || begin.x < 1 || begin.y < 1)
-		return ;
-	if (tab[begin.x][begin.y] == 'F')
-		return ;
-	tab[begin.x][begin.y] = 'F';
-	if (begin.x != 1)
-		if (tab[begin.x - 1][begin.y] == ch)
+	ch = tab[begin.y][begin.x];
+	tab[begin.y][begin.x] = 'F';
+
+	if (begin.x - 1 >= 0)
+		if (tab[begin.y][begin.x - 1] == ch)
 			flood_fill(tab, size, (t_point){begin.x - 1, begin.y});
-	if (begin.y != 1)
-		if (tab[begin.x][begin.y - 1] == ch)
+	if (begin.y - 1 >= 0)
+		if (tab[begin.y - 1][begin.x] == ch)
 			flood_fill(tab, size, (t_point){begin.x, begin.y - 1});
-	if (begin.x != size.x)
-		if (tab[begin.x + 1][begin.y] == ch)
-			flood_fill(tab, size, (t_point){begin.x + 1, begin.y});	
-	if (begin.y != size.y)
-		if (tab[begin.x][begin.y + 1] == ch)
+	if (begin.x + 1 < size.x)
+		if (tab[begin.y][begin.x + 1] == ch)
+			flood_fill(tab, size, (t_point){begin.x + 1, begin.y});
+	if (begin.y + 1 < size.y)
+		if (tab[begin.y + 1][begin.x] == ch)
 			flood_fill(tab, size, (t_point){begin.x, begin.y + 1});
 }
