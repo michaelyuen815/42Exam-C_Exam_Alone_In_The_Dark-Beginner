@@ -11,96 +11,70 @@
 /* ************************************************************************** */
 
 #include "check_mate.h"
+#include <stdio.h>
 
-int ft_check_main(int argc, char **board)
+int ft_check_chess(char *chess, char pt)
 {
-	int i;
-	int j;
+	while (*chess)
+		if (*chess++ == pt)
+			return (1);
+	return (0);
+}
+
+int ft_check_line(char **board, t_point *king, t_point *chk, int ac, char *chess)
+{
 	int k;
 
-	i = -1;
-	while (++i < argc - 1)
-	{
-		j = -1;
-		while (board[i][++j])
-			if (board[i][j] == 'K')
-				break;
-		if (board[i][j] == 'K')
-			break;
-	}
-	if (i == argc - 1)
-		return (0);
 	k = 1;
-	while (i - k >= 0 && j - k >= 0)
+	while (king->i + chk->i * k >= 0 && \
+			king->j + chk->j * k >= 0 && \
+			king->i + chk->i * k < ac - 1 && \
+			king->j + chk->j * k < ac - 1)
 	{
-		if (board[i - k][j - k] == 'B' || board[i - k][i - k] == 'Q')
+		if (ft_check_chess(chess, board[king->i + chk->i * k][king->j + chk->j * k]))
 			return (1);
-		else if (board[i - k][j - k] == 'P' || board[i - k][j - k] == 'R')
-			break;
-		k++;
-	}
-	k = 1;
-	while (i - k >= 0 && j + k < argc - 1)
-	{
-		if (board[i - k][j + k] == 'B' || board[i - k][i + k] == 'Q')
+		if (board[king->i + chk->i * k][king->j + chk->j * k] == 'P' && k == 1 && chk->i == 1 && chk->j)
 			return (1);
-		else if (board[i - k][j + k] == 'P' || board[i - k][j + k] == 'R')
-			break;
-		k++;
-	}
-	k = 1;
-	while (i - k >= 0)
-	{
-		if (board[i - k][j] == 'R' || board[i - k][j] == 'Q')
-			return (1);
-		else if (board[i - k][j] == 'B' || board[i - k][j] == 'P')
-			break;
-		k++;
-	}
-	k = 1;
-	while (i + k < argc - 1)
-	{
-		if (board[i + k][j] == 'R' || board[i + k][j] == 'Q')
-			return (1);
-		else if (board[i + k][j] == 'B' || board[i + k][j] == 'P')
-			break;
-		k++;
-	}
-	k = 1;
-	while (j - k >= 0)
-	{
-		if (board[i][j - k] == 'R' || board[i][j - k] == 'Q')
-			return (1);
-		else if (board[i][j - k] == 'B' || board[i][j - k] == 'P')
-			break;
-		k++;
-	}
-	k = 1;
-	while (j + k < argc - 1)
-	{
-		if (board[i][j + k] == 'R' || board[i][j + k] == 'Q')
-			return (1);
-		else if (board[i][j + k] == 'B' || board[i][j - k] == 'P')
-			break;
-		k++;
-	}
-	k = 1;
-	while (i + k < argc -1 && j - k >= 0)
-	{
-		if (board[i + k][j - k] == 'B' || board[i + k][j - k] == 'Q' || (k == 1 && board[i + k][j - k] == 'P'))
-			return (1);
-		else if (board[i + k][j - k] == 'R' || board[i + k][j - k] == 'P')
-			break;
-		k++;
-	}
-	k = 1;
-	while (i + k < argc - 1 && j + k < argc - 1)
-	{
-		if (board[i + k][j + k] == 'B' || board[i + k][j + k] == 'Q' || (k == 1 && board[i + k][j + k] == 'P'))
-			return (1);
-		else if (board[i + k][j + k] == 'R' || board[i + k][j + k] == 'P')
-			break;
+		if (ft_check_chess(CHESSALL, board[king->i + chk->i * k][king->j + chk->j * k]))
+			return (0);
 		k++;
 	}
 	return (0);
+}
+
+int ft_check_main(int argc, char **board)
+{
+	t_point *king;
+	t_point *t_chk;
+	char	check;
+
+	king = malloc(sizeof(t_point));
+	king->i = -1;
+	while (++(king->i) < argc - 1)
+	{
+		king->j = -1;
+		while (board[king->i][++(king->j)])
+			if (board[king->i][king->j] == 'K')
+				break;
+		if (board[king->i][king->j] == 'K')
+			break;
+	}
+	if (king->i == argc - 1)
+		return (0);
+	check = 0;
+	t_chk = malloc(sizeof(t_point));
+	t_chk->i = -1;
+	while (t_chk->i < 2)
+	{
+		t_chk->j= -1;
+		while (t_chk->j < 2)
+		{
+			check |= ft_check_line(board, king, t_chk, argc, (t_chk->i && t_chk->j ? "BQ" : "RQ"));
+			if (check)
+				return (check);
+			t_chk->j++;
+		}
+		t_chk->i++;
+	}
+	return (check);
 }

@@ -13,9 +13,17 @@
 #ifndef CHECK_MATE_H
 # define CHECK_MATE_H
 
-#include <stdlib.h>
-#include <unistd.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-int ft_check_mate(char **board, int len);
+# define CHESSALL "BQPRK"
+
+typedef struct 	s_point
+{
+	int i;
+	int j;
+}		t_point;
+
+int ft_check_main(int argc, char **board);
 
 #endif
